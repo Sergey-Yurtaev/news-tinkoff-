@@ -7,8 +7,9 @@
 
 import UIKit
 
+
 class NewsTableViewCell: UITableViewCell {
-    
+
     // MARK: IBOutlets
     @IBOutlet var imageNewsView: ImageView!
     {
@@ -21,17 +22,18 @@ class NewsTableViewCell: UITableViewCell {
     @IBOutlet var titleNewsLabel: UILabel!
     @IBOutlet var touchCounterLabel: UILabel!
     
-//    override func awakeFromNib() {
-//        super.awakeFromNib()
-//    }
-//
-//    override func setSelected(_ selected: Bool, animated: Bool) {
-//        super.setSelected(selected, animated: animated)
-//    }
+    override func awakeFromNib() {
+        super.awakeFromNib()
+    }
+
+    override func setSelected(_ selected: Bool, animated: Bool) {
+        super.setSelected(selected, animated: animated)
+    }
         
     // MARK: - Public methods
     func configure(with article: Article) {
         titleNewsLabel.text = article.title
         imageNewsView.fetchImage(from: article.urlToImage)
+        
     }
 }

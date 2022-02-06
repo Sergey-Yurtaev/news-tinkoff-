@@ -10,7 +10,8 @@ import UIKit
 class NewsViewController: UITableViewController {
     
     //MARK: Private properties
-    private let urlSrting = "https://newsapi.org/v2/everything?q=apple&apiKey=261ad03d5fb74b308c312eb98f9c58c1"
+    //pageSize20. прочитал доку и решил, что так проще сделать.
+    private let urlSrting = "https://newsapi.org/v2/everything?q=apple$&pageSize=20&apiKey=261ad03d5fb74b308c312eb98f9c58c1"
     private let cellID = "cell"
     private var news: News?
     private var newsArticle: [Article] = []
@@ -24,6 +25,9 @@ class NewsViewController: UITableViewController {
         setupNavigationBar()
         setNetworkData()
         setupRefreshControl()
+        
+        let tableViewLoadingCellNib = UINib(nibName: "LoadingCell", bundle: nil)
+        self.tableView.register(tableViewLoadingCellNib, forCellReuseIdentifier: "tableviewloadingcellid")
     }
     
     // MARK: - Private methods
@@ -74,6 +78,8 @@ extension NewsViewController {
         navigationController?.pushViewController(newsDetailsVC, animated: true)
         let detailsNews = newsArticle[indexPath.row]
         newsDetailsVC.newsDetails = detailsNews
+        
+        
     }
 }
 
