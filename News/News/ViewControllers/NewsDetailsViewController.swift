@@ -9,8 +9,10 @@ import UIKit
 import SafariServices
 
 class NewsDetailsViewController: UIViewController {
-
-    // MARK: - IBOutlets
+    // MARK: - Public properties
+    var newsDetails: Article!
+    
+    // MARK: - Outlets
     private lazy var descriptionLabel: UILabel = {
         let label = UILabel()
         label.text = newsDetails.content
@@ -40,10 +42,7 @@ class NewsDetailsViewController: UIViewController {
         
         return fullNewsButton
     }()
-    
-    // MARK: - Public properties
-    var newsDetails: Article!
-    
+        
     // MARK: - UIViewController Methods
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,6 +50,12 @@ class NewsDetailsViewController: UIViewController {
         navigationController?.navigationBar.tintColor = .white
         setupSubviews()
         setConstrains()
+    }
+    
+    // MARK: - Actions
+    @objc private func goToFullNews() {
+        let fullNews = SFSafariViewController(url: URL(string: newsDetails.url)!)
+        present(fullNews, animated: true)
     }
     
     // MARK: - Private methods
@@ -65,7 +70,7 @@ class NewsDetailsViewController: UIViewController {
         image.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            image.topAnchor.constraint(equalTo: view.topAnchor, constant: 165),
+            image.topAnchor.constraint(equalTo: view.topAnchor, constant: 150),
             image.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             image.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             image.bottomAnchor.constraint(equalTo: view.topAnchor, constant: 400)
@@ -86,10 +91,5 @@ class NewsDetailsViewController: UIViewController {
             fullNewsButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             fullNewsButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20)
         ])
-    }
-    
-    @objc private func goToFullNews() {
-        let fullNews = SFSafariViewController(url: URL(string: newsDetails.url)!)
-        present(fullNews, animated: true)
     }
 }

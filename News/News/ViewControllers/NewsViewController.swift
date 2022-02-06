@@ -10,11 +10,12 @@ import UIKit
 class NewsViewController: UITableViewController {
     
     //MARK: Private properties
-    //pageSize20. прочитал доку и решил, что так проще сделать.
+    //pageSize20. прочитал доку и решил, что так проще сделать. с кэшированием данных и счетчиком не успел справиться.
     private let urlSrting = "https://newsapi.org/v2/everything?q=apple$&pageSize=20&apiKey=261ad03d5fb74b308c312eb98f9c58c1"
     private let cellID = "cell"
     private var news: News?
     private var newsArticle: [Article] = []
+    var updateCounter = 0
     
     // MARK: - UIViewController Methods
     override func viewDidLoad() {
@@ -78,13 +79,10 @@ extension NewsViewController {
         navigationController?.pushViewController(newsDetailsVC, animated: true)
         let detailsNews = newsArticle[indexPath.row]
         newsDetailsVC.newsDetails = detailsNews
-        
-        
     }
 }
 
 // MARK: - Private Methods
-
 extension NewsViewController {
     
     private func setNetworkData() {
@@ -97,7 +95,6 @@ extension NewsViewController {
                 self.tableView.reloadData()
             }
         }
-        
     }
     
     private func setupRefreshControl() {
@@ -121,3 +118,4 @@ extension NewsViewController {
         }
     }
 }
+
