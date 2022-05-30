@@ -24,8 +24,8 @@ class NewsDetailsViewController: UIViewController {
     
     private lazy var image: ImageView = {
         let image = ImageView()
-        image.contentMode = .scaleAspectFit
-        image.fetchImage(from: newsDetails.urlToImage)
+        image.contentMode = .scaleAspectFill
+        image.fetchImage(from: newsDetails.urlToImage ?? "")
         return image
     }()
     
@@ -54,7 +54,7 @@ class NewsDetailsViewController: UIViewController {
     
     // MARK: - Actions
     @objc private func goToFullNews() {
-        let fullNews = SFSafariViewController(url: URL(string: newsDetails.url)!)
+        let fullNews = SFSafariViewController(url: URL(string: newsDetails.url ?? "")!)
         present(fullNews, animated: true)
     }
     
@@ -70,7 +70,7 @@ class NewsDetailsViewController: UIViewController {
         image.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            image.topAnchor.constraint(equalTo: view.topAnchor, constant: 150),
+            image.topAnchor.constraint(equalTo: view.topAnchor, constant: 200),
             image.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             image.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             image.bottomAnchor.constraint(equalTo: view.topAnchor, constant: 400)
@@ -79,7 +79,7 @@ class NewsDetailsViewController: UIViewController {
         descriptionLabel.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            descriptionLabel.topAnchor.constraint(equalTo: image.bottomAnchor, constant: 20),
+            descriptionLabel.topAnchor.constraint(equalTo: image.bottomAnchor, constant: 40),
             descriptionLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             descriptionLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20)
         ])

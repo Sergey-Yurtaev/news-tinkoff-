@@ -14,17 +14,14 @@ class NewsTableViewCell: UITableViewCell {
     @IBOutlet var imageNewsView: ImageView!
     {
         didSet {
-            imageNewsView.contentMode = .scaleAspectFit
+            imageNewsView.contentMode = .scaleAspectFill
             imageNewsView.clipsToBounds = true
             imageNewsView.backgroundColor = .white
+            imageNewsView.layer.cornerRadius = 20
         }
     }
     @IBOutlet var titleNewsLabel: UILabel!
     @IBOutlet var touchCounterLabel: UILabel!
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-    }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
@@ -33,7 +30,8 @@ class NewsTableViewCell: UITableViewCell {
     // MARK: - Public methods
     func configure(with article: Article) {
         titleNewsLabel.text = article.title
-        imageNewsView.fetchImage(from: article.urlToImage)
+        guard let imageURL = article.urlToImage else { return }
+        imageNewsView.fetchImage(from: imageURL)
         
     }
 }

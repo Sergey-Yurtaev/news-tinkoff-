@@ -68,7 +68,6 @@
 			isa = PBXGroup;
 			children = (
 				4B8B40D827AE81A9001EE814 /* NetworkManager */,
-				4B8B40D727AE818C001EE814 /* StorageManager */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -85,6 +84,7 @@
 			children = (
 				4B361CD527AEF4AF00173228 /* NetworkManager.swift */,
 				4B4BB02727B005B3003A3B4C /* ImageManager.swift */,
+				4B8B40D727AE818C001EE814 /* StorageManager */,
 			);
 			path = NetworkManager;
 			sourceTree = "<group>";

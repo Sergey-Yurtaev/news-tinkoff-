@@ -10,7 +10,7 @@ import UIKit
 class NewsViewController: UITableViewController {
     
     //MARK: Private properties
-    //pageSize20. прочитал доку и решил, что так проще сделать. с кэшированием данных и счетчиком не успел справиться.
+    //pageSize20
     private let urlSrting = "https://newsapi.org/v2/everything?q=apple$&pageSize=20&apiKey=261ad03d5fb74b308c312eb98f9c58c1"
     private let cellID = "cell"
     private var news: News?
@@ -21,6 +21,7 @@ class NewsViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
+        tableView.rowHeight = 100
         tableView.register(UINib(nibName: "NewsTableViewCell", bundle: nil),
                            forCellReuseIdentifier: cellID)
         setupNavigationBar()

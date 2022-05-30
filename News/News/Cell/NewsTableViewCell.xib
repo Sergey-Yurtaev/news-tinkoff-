@@ -18,23 +18,20 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <stackView opaque="NO" contentMode="scaleToFill" spacing="23" translatesAutoresizingMaskIntoConstraints="NO" id="kKV-Kh-PCJ">
-                        <rect key="frame" x="10" y="16" width="310" height="68"/>
+                        <rect key="frame" x="10" y="10" width="340" height="80"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="63o-Ed-haO" customClass="ImageView" customModule="News" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="80" height="68"/>
+                                <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="80" id="Uit-5A-OcS"/>
                                     <constraint firstAttribute="width" constant="80" id="wz2-EC-xh1"/>
                                 </constraints>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="17" translatesAutoresizingMaskIntoConstraints="NO" id="IE3-9L-TK2">
-                                <rect key="frame" x="103" y="0.0" width="207" height="68"/>
+                                <rect key="frame" x="103" y="0.0" width="237" height="80"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Iq-tK-3xQ">
-                                        <rect key="frame" x="0.0" y="0.0" width="207" height="68"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="68" id="kUg-4s-lgC"/>
-                                        </constraints>
+                                        <rect key="frame" x="0.0" y="0.0" width="237" height="80"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -51,12 +48,11 @@
                     </label>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="bottom" secondItem="kKV-Kh-PCJ" secondAttribute="bottom" constant="16" id="2GF-lq-JKb"/>
-                    <constraint firstItem="kKV-Kh-PCJ" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="16" id="9Ti-PK-VEs"/>
+                    <constraint firstItem="kKV-Kh-PCJ" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="60A-30-XOF"/>
                     <constraint firstAttribute="bottom" secondItem="npB-ag-yFP" secondAttribute="bottom" constant="16" id="EcT-6E-E1X"/>
                     <constraint firstItem="npB-ag-yFP" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="16" id="PfP-r1-GzU"/>
                     <constraint firstItem="kKV-Kh-PCJ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="Pmp-ge-skp"/>
-                    <constraint firstAttribute="trailing" secondItem="kKV-Kh-PCJ" secondAttribute="trailing" constant="80" id="SDj-kh-xN9"/>
+                    <constraint firstAttribute="trailing" secondItem="1Iq-tK-3xQ" secondAttribute="trailing" constant="50" id="a10-IO-DtV"/>
                     <constraint firstAttribute="trailing" secondItem="npB-ag-yFP" secondAttribute="trailing" constant="20" id="of7-jT-r7m"/>
                 </constraints>
             </tableViewCellContentView>
@@ -66,7 +62,7 @@
                 <outlet property="titleNewsLabel" destination="1Iq-tK-3xQ" id="hWa-hy-2Jc"/>
                 <outlet property="touchCounterLabel" destination="npB-ag-yFP" id="kbH-4t-uVE"/>
             </connections>
-            <point key="canvasLocation" x="195.6521739130435" y="155.35714285714286"/>
+            <point key="canvasLocation" x="195" y="155"/>
         </tableViewCell>
     </objects>
 </document>
