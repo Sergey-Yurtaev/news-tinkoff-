@@ -9,8 +9,6 @@ import UIKit
 import SafariServices
 
 class NewsDetailsViewController: UIViewController {
-    // MARK: - Public properties
-    var newsDetails: Article!
     
     // MARK: - Outlets
     private lazy var descriptionLabel: UILabel = {
@@ -42,6 +40,9 @@ class NewsDetailsViewController: UIViewController {
         
         return fullNewsButton
     }()
+    
+    // MARK: - Public properties
+    var newsDetails: Article!
         
     // MARK: - UIViewController Methods
     override func viewDidLoad() {
@@ -91,5 +92,9 @@ class NewsDetailsViewController: UIViewController {
             fullNewsButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             fullNewsButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20)
         ])
+    }
+    
+    deinit {
+        print("NewsDetailsViewController has been dealocated")
     }
 }

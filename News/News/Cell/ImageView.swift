@@ -19,11 +19,11 @@ class ImageView: UIImageView {
             return
         }
 
-        ImageManager.shared.getImage(from: imageURL) { (data, response) in
+        ImageManager.shared.getImage(from: imageURL) { [weak self] (data, response) in
             DispatchQueue.main.async {
-                self.image = UIImage(data: data)
+                self?.image = UIImage(data: data)
             }
-            self.saveDataToCach(with: data, and: response)
+            self?.saveDataToCach(with: data, and: response)
         }
     }
     

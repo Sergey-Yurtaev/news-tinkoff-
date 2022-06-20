@@ -14,7 +14,7 @@ class NewsViewController: UITableViewController {
     private let urlSrting = "https://newsapi.org/v2/everything?q=apple$&pageSize=20&apiKey=261ad03d5fb74b308c312eb98f9c58c1"
     private let cellID = "cell"
     private var news: News?
-    private var newsArticle: [Article] = []
+    private lazy var newsArticle: [Article] = []
     var updateCounter = 0
     
     // MARK: - UIViewController Methods
@@ -52,6 +52,10 @@ class NewsViewController: UITableViewController {
         navigationController?.navigationBar.standardAppearance = navBarApperance
         navigationController?.navigationBar.scrollEdgeAppearance = navBarApperance
     }
+    
+    deinit {
+        print("NewsViewController has been dealocated") // не выгружается
+    }
 }
 
 // MARK: - UITableViewDataSourse
@@ -87,13 +91,13 @@ extension NewsViewController {
 extension NewsViewController {
     
     private func setNetworkData() {
-        NetworkManager.shared.fetchData(from: urlSrting) { news in
+        NetworkManager.shared.fetchData(from: urlSrting) { [weak self] news in
             DispatchQueue.main.async {
-                self.news = news
-                self.news?.articles?.forEach({ value in
-                    self.newsArticle.append(value)
+                self?.news = news
+                self?.news?.articles?.forEach({ value in
+                    self?.newsArticle.append(value)
                 })
-                self.tableView.reloadData()
+                self?.tableView.reloadData()
             }
         }
     }
@@ -106,15 +110,15 @@ extension NewsViewController {
     }
     
     @objc private func updateView() {
-        NetworkManager.shared.fetchData(from: urlSrting) { news in
-            self.news = news
-            self.news?.articles?.forEach({ value in
-                self.newsArticle.append(value)
+        NetworkManager.shared.fetchData(from: urlSrting) { [weak self] news in
+            self?.news = news
+            self?.news?.articles?.forEach({ value in
+                self?.newsArticle.append(value)
             })
             DispatchQueue.main.async {
-                self.newsArticle.shuffle()
-                self.refreshControl?.endRefreshing()
-                self.tableView.reloadData()
+                self?.newsArticle.shuffle()
+                self?.refreshControl?.endRefreshing()
+                self?.tableView.reloadData()
             }
         }
     }

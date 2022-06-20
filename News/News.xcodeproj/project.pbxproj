@@ -50,8 +50,8 @@
 		4B8B40D427AE80FE001EE814 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				4B8B40D227AE660E001EE814 /* NewsDetailsViewController.swift */,
 				4BEF2BC627ADE6E60031D629 /* NewsViewController.swift */,
+				4B8B40D227AE660E001EE814 /* NewsDetailsViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
